@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMW | The Ultimate Driving Machine</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Cinzel:wght@700&display=swap" rel="stylesheet" />
+
+    <style>
+      :root {
+        --primary: #0a0a0a;
+        --background: #131313;
+        --surface: #1c1c1c;
+        --accent: #1e78ff;
+        --text: #ffffff;
+        --muted: #bbbbbb;
+        --contact-bg: #0d0d0d;
+      }
+
+      @keyframes fadeInUp {
+        0% { opacity: 0; transform: translateY(30px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes slideInLeft {
+        0% { opacity: 0; transform: translateX(-60px); }
+        100% { opacity: 1; transform: translateX(0); }
+      }
+
+      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+      html{scroll-behavior:smooth}
+      body{font-family:"Inter",sans-serif;background:var(--background);color:var(--text)}
+      ::-webkit-scrollbar{width:8px}
+      ::-webkit-scrollbar-track{background:#0f0f0f}
+      ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:4px}
+
+      .sidebar{position:fixed;inset:0 auto 0 0;width:240px;background:var(--primary);padding:2rem 1.5rem;display:flex;flex-direction:column;gap:2rem;overflow-y:auto;z-index:1200;animation:slideInLeft .9s ease-out both}
+      .logo{display:flex;align-items:center;gap:.75rem;font:700 1.75rem/1 "Inter",sans-serif;text-transform:uppercase}
+      .logo img{width:40px;height:40px}
+      .sidebar nav a{display:block;padding:.65rem 1rem;font-size:.9rem;letter-spacing:1px;text-transform:uppercase;color:var(--text);text-decoration:none;border-radius:.35rem;transition:background .3s}
+      .sidebar nav a:hover{background:var(--accent);color:#000}
+
+      .topbar{position:fixed;top:0;left:240px;right:0;height:64px;background:var(--surface);display:flex;align-items:center;padding:0 3rem;z-index:1000;box-shadow:0 2px 4px rgba(0,0,0,.4);animation:fadeInUp .8s .2s ease-out both}
+      .topbar nav{display:flex;gap:2.5rem}
+      .topbar nav a{position:relative;color:var(--text);text-decoration:none;font-size:1rem;letter-spacing:.5px;transition:color .3s}
+      .topbar nav a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--accent);transition:width .3s}
+      .topbar nav a:hover::after{width:100%}
+
+      main{margin-left:240px;padding-top:80px;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:6px 6px}
+      .section{padding:4rem clamp(1rem,5vw,4rem) 3rem;opacity:0;animation:fadeInUp .8s ease-out forwards}
+      .section:nth-of-type(odd){animation-delay:.2s}
+      .section:nth-of-type(even){animation-delay:.4s}
+      .section h2{margin-bottom:2rem;font-size:2rem;color:var(--accent)}
+
+      .hero{min-height:80vh;display:flex;flex-direction:column;gap:1.5rem;justify-content:center;animation-delay:.1s}
+      .brand-wrapper{position:relative;display:inline-block}
+      .brand-wrapper::before{content:"";position:absolute;top:-1.75rem;left:0;width:160px;height:4px;background:linear-gradient(90deg,#fff,rgba(255,255,255,0));border-radius:2px}
+      .brand{font-family:"Cinzel",serif;font-size:3.75rem;letter-spacing:1.5px;color:var(--accent);text-shadow:0 0 6px rgba(30,120,255,.4)}
+      .hero h1{font-size:clamp(2.8rem,5vw+1rem,4rem);line-height:1.15}
+      .hero p{max-width:600px;font-size:1.125rem;color:var(--muted)}
+
+      .models-grid{display:grid;gap:1.75rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+      .card{background:var(--surface);border-radius:1rem;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s;animation:fadeInUp .8s ease-out forwards}
+      .card:hover{transform:translateY(-6px);box-shadow:0 12px 24px rgba(0,0,0,.4)}
+      .card img{width:100%;aspect-ratio:16/9;object-fit:cover;background:#222}
+      .card-content{padding:1rem 1.25rem 1.5rem;display:flex;flex-direction:column;gap:.65rem}
+      .card-content h3{font-size:1.2rem}
+      .card-content p{font-size:.9rem;color:var(--muted);line-height:1.5}
+
+      .contact-section{background:var(--contact-bg);border-top:1px solid rgba(255,255,255,.2);opacity:0;animation:fadeInUp .8s ease-out forwards;animation-delay:.6s}
+      .contact-section h2{color:var(--accent)}
+      .contact-section p{line-height:1.9;font-size:1.05rem}
+
+      @media(max-width:768px){.sidebar{width:200px}.topbar{left:200px}main{margin-left:200px}}
+      @media(max-width:600px){.sidebar{display:none}.topbar{left:0}main{margin-left:0}}
+    </style>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="logo"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/BMW.svg" alt="BMW logo"/>BMW</div>
+      <nav>
+        <a href="#models">Models</a>
+        <a href="#heritage">Heritage</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </aside>
+
+    <header class="topbar">
+      <nav>
+        <a href="#experience">Experience</a>
+        <a href="#motorsport">Motorsport</a>
+        <a href="#news">News</a>
+        <a href="#innovation">Innovation</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section hero" id="home">
+        <div class="brand-wrapper">
+          <div class="brand">Bayerische Motoren Werke</div>
+        </div>
+        <h1>The Ultimate Driving Machine</h1>
+        <p>For over a century, BMW has fused visionary engineering, groundbreaking technology, and iconic design to deliver an unrivaled driving experience.</p>
+      </section>
+
+      
+      <section class="section" id="models">
+        <h2>Models</h2>
+        <div class="models-grid">
+         
+          <article class="card">
+            <img src="img/BMW-M3.avif" alt="BMW M3 Competition" />
+            <div class="card-content">
+              <h3>BMW M3 Competition</h3>
+              <p>510 hp · Twin-turbo inline-6 · Track-tuned precision.</p>
+            </div>
+          </article>
+           
+          <article class="card">
+            <img src="img/BMW-i8.avif" alt="BMW i8" />
+            <div class="card-content">
+              <h3>BMW i8 Coupe</h3>
+              <p>369 hp hybrid · Carbon-fiber chassis · Futuristic gull-wing doors.</p>
+            </div>
+          </article>
+          
+          <article class="card">
+            <img src="img/x6.avif" alt="BMW X6 M" />
+            <div class="card-content">
+              <h3>BMW X6-M Competition</h3>
+              <p>617 hp · 4.4-L V8 · Sport Activity Coupe with aggressive styling.</p>
+            </div>
+          </article>
+          
+          <article class="card">
+            <img src="img/i4.avif" alt="BMW i4 M50" />
+            <div class="card-content">
+              <h3>BMW i4-M50</h3>
+              <p>544 hp electric · 590 km range · M-tuned chassis.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="experience">
+        <h2>Experience</h2>
+        <p>Discover the unmatched driving pleasure, design, and performance that define every BMW vehicle.</p>
+      </section>
+
+      <section class="section" id="motorsport">
+        <h2>Motorsport</h2>
+        <p>BMW's motorsport legacy is built on decades of performance excellence and racing heritage.</p>
+      </section>
+
+      <section class="section" id="news">
+        <h2>News</h2>
+        <p>Stay updated with the latest innovations, releases, and news from the world of BMW.</p>
+      </section>
+
+      <section class="section" id="innovation">
+        <h2>Innovation</h2>
+        <p>BMW leads the automotive world with cutting-edge technologies in electrification, connectivity, and sustainability.</p>
+      </section>
+
+      <section class="section" id="heritage">
+        <h2>Heritage</h2>
+        <p>BMW's legacy began in 1916, crafting aircraft engines before shifting to motorcycles and automobiles. The brand is renowned for blending engineering excellence with a passion for motorsport and innovation.</p>
+      </section>
+
+      <section class="section contact-section" id="contact">
+        <h2>Contact</h2>
+        <p>Email: support@bmw.com<br />Phone: +71 123-235-435<br />Address: BMW AG, Calahomas, Munich, Germany</p>
+      </section>
+    </main>
+  </body>
+</html>
